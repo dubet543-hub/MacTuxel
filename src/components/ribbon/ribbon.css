@@ -1,0 +1,461 @@
+.ribbon {
+  flex-shrink: 0;
+  background: var(--mtx-ribbon);
+  border-bottom: var(--hair) solid var(--mtx-border);
+}
+
+/* ---- Tabs ------------------------------------------------------------- */
+
+.ribbon__tabs {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 30px;
+  padding: 0 8px;
+  background: var(--mtx-chrome);
+  border-bottom: var(--hair) solid var(--mtx-border);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.ribbon__tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.ribbon__tab {
+  position: relative;
+  height: 26px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 6px 6px 0 0;
+  background: transparent;
+  color: var(--mtx-text-muted);
+  font-size: 12.5px;
+  white-space: nowrap;
+}
+
+.ribbon__tab:hover {
+  color: var(--mtx-text);
+  background: var(--mtx-hover);
+}
+
+.ribbon__tab[aria-selected="true"] {
+  color: var(--mtx-text);
+  font-weight: 600;
+  background: var(--mtx-ribbon);
+}
+
+.ribbon__tab[aria-selected="true"]::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--mtx-accent);
+}
+
+.is-collapsed .ribbon__tab[aria-selected="true"] {
+  background: transparent;
+}
+
+.ribbon__spacer {
+  flex: 1;
+}
+
+.ribbon__collapse {
+  align-self: center;
+  display: inline-flex;
+  padding: 3px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--mtx-text-muted);
+}
+
+.ribbon__collapse:hover {
+  background: var(--mtx-hover);
+}
+
+/* ---- Panel & groups --------------------------------------------------- */
+
+.ribbon__panel {
+  display: flex;
+  align-items: stretch;
+  height: 88px;
+  padding: 4px 4px 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+}
+
+.rg {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  padding: 0 6px;
+  border-right: var(--hair) solid var(--mtx-border);
+}
+
+.rg:last-child {
+  border-right: 0;
+}
+
+.rg__content {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.rg__label {
+  height: 18px;
+  line-height: 16px;
+  text-align: center;
+  font-size: 10.5px;
+  color: var(--mtx-text-muted);
+  white-space: nowrap;
+}
+
+.rg__stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.rg__stack:has(> .rg__row) {
+  gap: 6px;
+  padding-top: 3px;
+}
+
+.rg__row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.rg__segment {
+  display: flex;
+  gap: 0;
+  border-radius: 6px;
+}
+
+.rg__centered {
+  align-self: center;
+  margin-top: 16px;
+}
+
+/* ---- Ribbon button ---------------------------------------------------- */
+
+.rb {
+  position: relative;
+  display: inline-flex;
+  align-items: stretch;
+  border-radius: 6px;
+}
+
+.rb__main,
+.rb__arrow {
+  display: inline-flex;
+  align-items: center;
+  border: 0;
+  background: transparent;
+  color: var(--mtx-text);
+  border-radius: 6px;
+}
+
+.rb__main:hover:not([aria-disabled="true"]),
+.rb__arrow:hover:not([aria-disabled="true"]),
+.rb.is-open .rb__main,
+.rb.is-open .rb__arrow {
+  background: var(--mtx-hover);
+}
+
+.rb__main:active:not([aria-disabled="true"]),
+.rb__arrow:active:not([aria-disabled="true"]) {
+  background: var(--mtx-press);
+}
+
+.rb__main.is-active {
+  background: var(--mtx-accent-soft);
+  color: var(--mtx-accent-strong);
+}
+
+.rb__main[aria-disabled="true"],
+.rb__arrow[aria-disabled="true"] {
+  color: var(--mtx-text-faint);
+}
+
+.rb__icon {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rb__swatch {
+  width: 14px;
+  height: 3px;
+  margin-top: -1px;
+  border-radius: 1px;
+  box-shadow: inset 0 0 0 var(--hair) rgba(0, 0, 0, 0.25);
+}
+
+.rb__label {
+  white-space: nowrap;
+}
+
+.rb__caret {
+  opacity: 0.6;
+}
+
+/* Split buttons: main + arrow share one hover shape. */
+.rb--split .rb__main {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.rb--split .rb__arrow {
+  padding: 0 2px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* small: icon + label on one line */
+.rb--small .rb__main {
+  gap: 5px;
+  height: 22px;
+  padding: 0 6px 0 4px;
+  font-size: 12px;
+}
+
+/* icon-only */
+.rb--icon .rb__main {
+  justify-content: center;
+  width: 26px;
+  height: 24px;
+}
+
+.rb--icon.rb--split .rb__main {
+  width: 24px;
+}
+
+/* large: icon above a (possibly two-line) label */
+.rb--large {
+  flex-direction: column;
+}
+
+.rb--large .rb__main {
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 3px;
+  min-width: 46px;
+  max-width: 76px;
+  height: 66px;
+  padding: 5px 4px 2px;
+  font-size: 11.5px;
+  line-height: 1.15;
+}
+
+.rb--large .rb__label {
+  white-space: normal;
+  text-align: center;
+}
+
+.rb--large.rb--split .rb__main {
+  height: 46px;
+  border-radius: 6px 6px 0 0;
+}
+
+.rb--large.rb--split .rb__arrow {
+  justify-content: center;
+  height: 20px;
+  border-radius: 0 0 6px 6px;
+}
+
+.rb--large .rb__caret {
+  margin-top: -2px;
+}
+
+/* ---- Inline controls -------------------------------------------------- */
+
+.rc-select {
+  height: 24px;
+  padding: 0 6px;
+  border-radius: 5px;
+  border: var(--hair) solid var(--mtx-border-strong);
+  background: var(--mtx-surface);
+  font-size: 12px;
+}
+
+.rc-select--font {
+  width: 136px;
+}
+
+.rc-select--numfmt {
+  width: 150px;
+}
+
+.rc-combo {
+  display: inline-flex;
+  height: 24px;
+  border-radius: 5px;
+  border: var(--hair) solid var(--mtx-border-strong);
+  background: var(--mtx-surface);
+  overflow: hidden;
+}
+
+.rc-combo__input {
+  width: 34px;
+  border: 0;
+  padding: 0 4px;
+  background: transparent;
+  font-size: 12px;
+  text-align: center;
+  outline: none;
+}
+
+.rc-combo__button {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 3px;
+  border: 0;
+  border-left: var(--hair) solid var(--mtx-border);
+  background: transparent;
+}
+
+.rc-combo__button:hover {
+  background: var(--mtx-hover);
+}
+
+.rc-combo:focus-within {
+  box-shadow: var(--mtx-focus);
+}
+
+/* ---- Cell styles gallery ---------------------------------------------- */
+
+.style-gallery {
+  display: grid;
+  grid-template-columns: repeat(5, 92px);
+  gap: 5px;
+  padding: 4px;
+}
+
+.style-gallery__item {
+  height: 30px;
+  padding: 0 6px;
+  border: var(--hair) solid var(--mtx-border);
+  border-radius: 4px;
+  background: var(--mtx-surface);
+  color: var(--mtx-text);
+  font-size: 12px;
+  text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.style-gallery__item:hover {
+  outline: 2px solid var(--mtx-accent);
+  outline-offset: 1px;
+}
+
+/* ---- Responsive ------------------------------------------------------- */
+
+/* Narrower windows: compact progressively, labels go before commands do. */
+@media (max-width: 1520px) {
+  .rg {
+    padding: 0 4px;
+  }
+
+  .rc-select--font {
+    width: 116px;
+  }
+
+  .rc-select--numfmt {
+    width: 118px;
+  }
+
+  /* Clipboard commands become icon-only (tooltips keep their names). */
+  .rg[aria-label="Clipboard"] .rg__stack .rb__label {
+    display: none;
+  }
+
+  .rg[aria-label="Clipboard"] .rg__stack .rb__main {
+    padding: 0 5px;
+  }
+}
+
+@media (max-width: 1320px) {
+  .rg[aria-label="Editing"] .rg__stack .rb__label {
+    display: none;
+  }
+}
+
+@media (max-width: 1180px) {
+  .rb--large .rb__main {
+    min-width: 38px;
+    padding: 5px 2px 2px;
+    font-size: 10.5px;
+  }
+
+  .rg[aria-label="Font"] .rb--icon .rb__main,
+  .rg[aria-label="Alignment"] .rb--icon .rb__main,
+  .rg[aria-label="Number"] .rb--icon .rb__main {
+    width: 23px;
+  }
+}
+
+@media (max-width: 1320px) {
+  .rg__row .rb--small .rb__label {
+    display: none;
+  }
+
+  .rg__row .rb--small .rb__main {
+    padding: 0 4px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .rb--large .rb__main {
+    max-width: 62px;
+    font-size: 11px;
+  }
+
+  .rc-select--font {
+    width: 112px;
+  }
+
+  .rc-select--numfmt {
+    width: 112px;
+  }
+}
+
+/* ---- Collapsed groups (narrow windows) -------------------------------- */
+
+.rg.is-collapsed {
+  justify-content: flex-start;
+  padding: 0 2px;
+}
+
+.rg.is-collapsed > .rb--large .rb__main {
+  height: 80px;
+  max-width: 70px;
+}
+
+.rg__content--drop {
+  display: none;
+}
+
+.rg__content--drop.is-open {
+  display: flex;
+  position: fixed;
+  z-index: 880;
+  height: 76px;
+  padding: 6px 8px;
+  border-radius: 9px;
+  background: var(--mtx-ribbon);
+  box-shadow: var(--mtx-shadow);
+  animation: popover-in 0.1s ease-out;
+}

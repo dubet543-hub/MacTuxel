@@ -1,0 +1,197 @@
+/* MacTuxel design tokens and app shell. The grid itself is themed by Univer (darkMode). */
+
+:root {
+  --mtx-font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --mtx-mono: ui-monospace, "SF Mono", Menlo, monospace;
+
+  --mtx-window: #f5f5f7;
+  --mtx-chrome: #ebebee;
+  --mtx-ribbon: #f8f8fa;
+  --mtx-surface: #ffffff;
+  --mtx-border: #d6d6db;
+  --mtx-border-strong: #c3c3c9;
+  --mtx-text: #1d1d1f;
+  --mtx-text-muted: #6e6e76;
+  --mtx-text-faint: #a1a1a8;
+  --mtx-accent: #0d9488;
+  --mtx-accent-strong: #0f766e;
+  --mtx-accent-soft: rgba(13, 148, 136, 0.14);
+  --mtx-accent-contrast: #ffffff;
+  --mtx-hover: rgba(0, 0, 0, 0.055);
+  --mtx-press: rgba(0, 0, 0, 0.1);
+  --mtx-danger: #dc2626;
+  --mtx-dirty: #b45309;
+  --mtx-shadow: 0 8px 28px rgba(0, 0, 0, 0.16), 0 0 0 0.5px rgba(0, 0, 0, 0.12);
+  --mtx-menu-bg: rgba(250, 250, 252, 0.94);
+  --mtx-tooltip-bg: rgba(30, 30, 32, 0.94);
+  --mtx-tooltip-text: #f5f5f7;
+  --mtx-focus: 0 0 0 3px rgba(13, 148, 136, 0.35);
+
+  /* Hairlines render as true device pixels on Retina displays. */
+  --hair: 1px;
+  color-scheme: light;
+}
+
+@media (min-resolution: 2dppx) {
+  :root {
+    --hair: 0.5px;
+  }
+}
+
+:root[data-theme="dark"] {
+  --mtx-window: #1b1b1d;
+  --mtx-chrome: #2a2a2d;
+  --mtx-ribbon: #232326;
+  --mtx-surface: #1c1c1e;
+  --mtx-border: #3a3a3e;
+  --mtx-border-strong: #4a4a50;
+  --mtx-text: #ececf0;
+  --mtx-text-muted: #9b9ba3;
+  --mtx-text-faint: #66666d;
+  --mtx-accent: #2dd4bf;
+  --mtx-accent-strong: #5eead4;
+  --mtx-accent-soft: rgba(45, 212, 191, 0.18);
+  --mtx-accent-contrast: #062925;
+  --mtx-hover: rgba(255, 255, 255, 0.075);
+  --mtx-press: rgba(255, 255, 255, 0.13);
+  --mtx-danger: #f87171;
+  --mtx-dirty: #fbbf24;
+  --mtx-shadow: 0 10px 32px rgba(0, 0, 0, 0.5), 0 0 0 0.5px rgba(255, 255, 255, 0.12);
+  --mtx-menu-bg: rgba(44, 44, 48, 0.95);
+  --mtx-tooltip-bg: rgba(236, 236, 240, 0.96);
+  --mtx-tooltip-text: #1d1d1f;
+  --mtx-focus: 0 0 0 3px rgba(45, 212, 191, 0.4);
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--mtx-window);
+  color: var(--mtx-text);
+  font-family: var(--mtx-font);
+  font-size: 12px;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+  /* Native feel: chrome text isn't selectable. Inputs and the grid manage their own. */
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+input {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--mtx-focus);
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
+}
+
+/* ---- Grid host -------------------------------------------------------- */
+
+.sheet-host {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  overflow: hidden;
+  background: var(--mtx-surface);
+}
+
+.sheet-mount {
+  position: absolute;
+  inset: 0;
+}
+
+/* ---- Buttons and fields used across dialogs ----------------------------- */
+
+.btn {
+  min-width: 72px;
+  height: 26px;
+  padding: 0 14px;
+  border-radius: 6px;
+  border: var(--hair) solid var(--mtx-border-strong);
+  background: var(--mtx-surface);
+  font-size: 13px;
+}
+
+.btn:hover {
+  background: var(--mtx-hover);
+}
+
+.btn--primary {
+  background: var(--mtx-accent);
+  border-color: transparent;
+  color: var(--mtx-accent-contrast);
+  font-weight: 500;
+}
+
+.btn--primary:hover {
+  background: var(--mtx-accent-strong);
+}
+
+.btn--danger {
+  background: var(--mtx-danger);
+  color: #fff;
+}
+
+.btn--danger:hover {
+  background: var(--mtx-danger);
+  filter: brightness(0.92);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field__label {
+  font-size: 12px;
+  color: var(--mtx-text-muted);
+}
+
+.field__input {
+  height: 28px;
+  padding: 0 8px;
+  border-radius: 6px;
+  border: var(--hair) solid var(--mtx-border-strong);
+  background: var(--mtx-surface);
+  font-size: 13px;
+}
+
+.field__input[aria-invalid="true"] {
+  border-color: var(--mtx-danger);
+}
+
+.field__error {
+  margin: 0;
+  color: var(--mtx-danger);
+  font-size: 12px;
+}

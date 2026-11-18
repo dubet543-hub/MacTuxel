@@ -1,0 +1,95 @@
+.titlebar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  height: 40px;
+  padding: 0 10px;
+  background: var(--mtx-chrome);
+  flex-shrink: 0;
+}
+
+/* Leave room for the macOS traffic lights (overlay title bar), plus the
+   usual ~18px of breathing room after the green button. */
+.titlebar--native {
+  padding-left: 92px;
+}
+
+.titlebar__left {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+}
+
+.titlebar__app {
+  font-weight: 650;
+  font-size: 13px;
+  letter-spacing: -0.01em;
+}
+
+.titlebar__title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--mtx-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 44vw;
+}
+
+.titlebar__dirty {
+  color: var(--mtx-text-muted);
+  font-weight: 400;
+}
+
+.titlebar__right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.qat {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  margin-left: 8px;
+  padding-left: 8px;
+  border-left: var(--hair) solid var(--mtx-border-strong);
+}
+
+.qat__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 24px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--mtx-text-muted);
+}
+
+.qat__btn:hover:not([aria-disabled="true"]) {
+  background: var(--mtx-hover);
+  color: var(--mtx-text);
+}
+
+.qat__btn:active:not([aria-disabled="true"]) {
+  background: var(--mtx-press);
+}
+
+.qat__btn[aria-disabled="true"] {
+  color: var(--mtx-text-faint);
+}
+
+.qat__sep {
+  width: var(--hair);
+  height: 14px;
+  margin: 0 4px;
+  background: var(--mtx-border-strong);
+}
+
+@media (max-width: 1000px) {
+  .titlebar__app {
+    display: none;
+  }
+}

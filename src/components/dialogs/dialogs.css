@@ -1,0 +1,147 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 0;
+  text-align: center;
+}
+
+.about__name {
+  margin-top: 6px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.about__meta {
+  color: var(--mtx-text-muted);
+}
+
+.about__text {
+  margin: 8px 0 0;
+  font-size: 13px;
+}
+
+.about__credits {
+  margin: 4px 0 0;
+  font-size: 11px;
+  color: var(--mtx-text-muted);
+}
+
+.shortcuts,
+.fnref {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.shortcuts h3,
+.fnref h3 {
+  margin: 0 0 4px;
+  font-size: 11px;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--mtx-text-muted);
+}
+
+.shortcuts dl,
+.stats-table {
+  margin: 0;
+}
+
+.shortcuts__row,
+.stats-table > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 4px 0;
+  border-bottom: var(--hair) solid var(--mtx-border);
+  font-size: 12.5px;
+}
+
+.shortcuts dt,
+.shortcuts dd,
+.stats-table dt,
+.stats-table dd {
+  margin: 0;
+}
+
+.shortcuts kbd {
+  font-family: var(--mtx-font);
+  color: var(--mtx-text-muted);
+}
+
+.stats-table dd {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.fnref__row {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 10px;
+  padding: 4px 0;
+  border-bottom: var(--hair) solid var(--mtx-border);
+  font-size: 12px;
+}
+
+.fnref__row code {
+  font-family: var(--mtx-mono);
+  font-size: 11.5px;
+}
+
+/* ---- Document dialogs ---------------------------------------------------- */
+
+.dialog__spacer {
+  flex: 1;
+}
+
+.btn--plain {
+  background: transparent;
+}
+
+.compat__intro {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.compat__icon {
+  flex-shrink: 0;
+  color: var(--mtx-dirty);
+  margin-top: 1px;
+}
+
+.compat__icon--ok {
+  color: var(--mtx-accent);
+}
+
+.compat__section h3 {
+  margin: 10px 0 4px;
+  font-size: 11px;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--mtx-text-muted);
+}
+
+.compat__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.compat__list li {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 5px 0;
+  border-bottom: var(--hair) solid var(--mtx-border);
+  font-size: 12.5px;
+}
+
+.compat__list span {
+  color: var(--mtx-text-muted);
+}

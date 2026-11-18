@@ -1,0 +1,79 @@
+.banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 30px;
+  padding: 4px 10px;
+  background: color-mix(in srgb, var(--mtx-dirty) 13%, var(--mtx-ribbon));
+  border-bottom: var(--hair) solid var(--mtx-border);
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.banner__icon {
+  flex-shrink: 0;
+  color: var(--mtx-dirty);
+}
+
+.banner__text {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.banner__link {
+  border: 0;
+  background: transparent;
+  color: var(--mtx-accent-strong);
+  font-weight: 600;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.banner__link:hover,
+.banner__close:hover {
+  background: var(--mtx-hover);
+}
+
+.banner__close {
+  display: inline-flex;
+  border: 0;
+  background: transparent;
+  color: var(--mtx-text-muted);
+  padding: 3px;
+  border-radius: 4px;
+}
+
+.drop-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 990;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--mtx-accent) 14%, transparent);
+  border: 3px dashed var(--mtx-accent);
+  pointer-events: none;
+  animation: fade-in 0.1s ease-out;
+}
+
+.drop-overlay__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 22px 34px;
+  border-radius: 14px;
+  background: var(--mtx-surface);
+  box-shadow: var(--mtx-shadow);
+  color: var(--mtx-text);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.drop-overlay__card small {
+  font-weight: 400;
+  color: var(--mtx-text-muted);
+}

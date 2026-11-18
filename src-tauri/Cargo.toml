@@ -1,0 +1,37 @@
+[package]
+name = "mactuxel"
+version = "0.1.0"
+description = "MacTuxel — an offline-first spreadsheet editor for macOS"
+authors = ["Tushar"]
+edition = "2024"
+rust-version = "1.85"
+
+[lib]
+# The `_lib` suffix keeps the lib name distinct from the bin name.
+name = "mactuxel_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-dialog = "2"
+tauri-plugin-fs = "2"
+# Keeps file access granted via Open/Save/drag-and-drop across launches (Open Recent).
+tauri-plugin-persisted-scope = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Native AppKit calls (Edit ▸ Paste action, window "edited" dot); same crates Tauri already links.
+[target.'cfg(target_os = "macos")'.dependencies]
+objc2 = "0.6"
+objc2-app-kit = { version = "0.3", default-features = false, features = ["std", "NSApplication", "NSResponder", "NSWindow"] }
+
+# https://tauri.app/concept/size/#cargo-configuration
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = 3
+panic = "abort"
+strip = true
